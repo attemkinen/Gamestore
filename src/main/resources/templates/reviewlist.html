@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>books</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+ <div class="container">
+	<h1>Customer reviews for games</h1>
+  <table class="table table-bordered">
+  <thead>
+	
+	<tr>
+			<th>Review</th>
+			<th>Id</th>
+			
+		</tr>
+		</thead>
+		<tbody>
+		
+		<tr th:each="review : ${review}">
+			<td th:text="${review.name}">review</td>
+			<td th:text="${review.reviewId}">id</td>
+			
+			
+			
+		</tr>
+		</tbody>
+	
+	</table>
+	
+</div>
+</body>
+</html>
