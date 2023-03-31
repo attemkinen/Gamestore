@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Book form</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Book</h1>
+	<form action="#" th:action="@{/savegame}" th:object=${game}
+		method="post">
+		<p>
+			Name: <input type="text" th:field="${game.name}" />
+		</p>
+		<p>
+			Console: <input type="text" th:field="${game.console}" />
+		</p>
+		<p>
+			Description: <input type="text" th:field="${game.description}" />
+		</p>
+		<p>
+			Age limit: <input type="text" th:field="${game.ageLimit}" />
+		</p>
+		<p>
+			Published: <input type="text" th:field="${game.published}" />
+		</p>
+		<p>
+			Price: <input type="text" th:field="${game.price}" />
+		</p>
+
+
+
+		<div style="clear: both; display: block; height: 10px;"></div>
+
+		<input type="submit" value="Submit" /> <input type="reset"
+			value="Reset" /> 
+	</form>
+	<a href="/games" class="btn btn-primary"> cancel</a>
+
+</body>
+</html>
