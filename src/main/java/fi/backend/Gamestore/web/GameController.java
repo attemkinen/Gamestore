@@ -63,6 +63,7 @@ public class GameController {
 	@RequestMapping(value = "/newgame", method = RequestMethod.GET)
 	public String GetnewGameForm(Model model) {
 		model.addAttribute("game", new Game());
+		model.addAttribute("categories", crepository.findAll());
 		return "gameform";
 	}
 
