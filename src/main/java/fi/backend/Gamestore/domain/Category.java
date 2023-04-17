@@ -11,12 +11,15 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 public class Category {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long categoryId;
+	
+	@NotNull (message = "name cannot be empty")
 	private String name;
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "category")
@@ -27,7 +30,7 @@ public class Category {
 	public Category() {
 
 	}
-
+	
 	public Category(String name) {
 		super();
 		this.name = name;

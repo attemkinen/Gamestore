@@ -13,7 +13,7 @@
 <body>
 
 <nav class="navbar navbar-light" style="background-color:#969bd9;">
-    <span class="navbar-brand">Add category</span>
+    <span class="navbar-brand">Welcome to the Gamestore</span>
 
     <div id="navbar" class="collapse navbar-collapse">
 
@@ -24,9 +24,14 @@
 		</form>
 	</div></li>
         </ul>
-        
         <ul class="nav navbar-nav">
-            <li ><a th:href="@{/categories}"><n1>Categories</n1></a></li>
+            <li ><a th:href="@{/games}"><n1>Games & mutch more</n1></a></li>
+        </ul>
+        <ul class="nav navbar-nav">
+            <li ><a th:href="@{/login}"><n1>Sign in</n1></a></li>
+        </ul>
+        <ul class="nav navbar-nav">
+            <li ><a th:href="@{/signup}"><n1>Sign up</n1></a></li>
         </ul>
     </div>
 </nav>
@@ -35,11 +40,13 @@
     <table class="table table-bordered">
   <thead>
 
-				
+				<h1>categories</h1>
 	<div>
 	<form action="#" th:action="@{/savecategory}"  th:object= ${categories} method="post">
 	<p>Name: <input type="text" th:field="${categories.name}" /></p>
 	<input type="submit" value="Submit" /> <input type="reset" value="Reset" />
+	
+	<a href ="/categorylist" class = "btn btn-primary"> Show existing categories</a>
 	</form>
 	</div>
 

@@ -1,6 +1,7 @@
 package fi.backend.Gamestore;
 
 import org.slf4j.Logger;
+
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -27,6 +28,8 @@ public class GamestoreApplication {
 	@Bean
 	public CommandLineRunner demo (GameRepository grepository, UserRepository urepository, CategoryRepository crepository) {
 		return (args) -> {
+			
+		
 			
 			// adding new categories
 			Category c1 = new Category ("Fantasy");

@@ -13,16 +13,18 @@
   <thead>
 	
 	<tr>
-			<th>Review</th>
 			<th>Id</th>
+			<th>Review</th>
 			
 		</tr>
 		</thead>
 		<tbody>
 		
 		<tr th:each="review : ${review}">
-			<td th:text="${review.name}">review</td>
+			
 			<td th:text="${review.reviewId}">id</td>
+			<td th:text="${review.review}">id</td>
+			
 			
 			
 			

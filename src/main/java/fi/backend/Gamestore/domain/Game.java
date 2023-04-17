@@ -1,20 +1,30 @@
 package fi.backend.Gamestore.domain;
 
 import jakarta.persistence.Entity;
+
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+
 
 @Entity
 public class Game {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	
 	private Long id;
-	private String name, console, description;
-	private int ageLimit, published;
+	@NotEmpty (message = "name cannot be empty")
+	private String name;
+	private String console;
+	private String description;
+	private int ageLimit;
+	private int published;
+	@NotNull (message = "game has to has price")
 	private double price;
 	
 	@ManyToOne

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/%22%3E">
+    <title>edit game</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+</head>
+<body>
+    <h1>Edit game</h1>
+    <div class="formdiv">
+        <form th:object="${game}" th:action="@{/update/{id}(id=${gameId})}" method="post">
+              <label for="name">Name</label><br>
+            <input type="text" id="name" th:field="*{name}">
+            <div style="clear: both; display: block; height: 10px;"></div>
+              <label for="console">console</label><br>
+            <input type="text" id="console" th:field="*{console}">
+            <div style="clear: both; display: block; height: 10px;"></div>
+              <label for="description">Description</label><br>
+            <input type="text" id="description" th:field="*{description}">
+            <div style="clear: both; display: block; height: 10px;"></div>
+            <label for="ageLimit">ageLimit</label><br>
+            <input type="text" id="ageLimit" th:field="*{ageLimit}">
+            <div style="clear: both; display: block; height: 10px;"></div>
+            <label for="published">published</label><br>
+            <input type="text" id="published" th:field="*{published}">
+            <div style="clear: both; display: block; height: 10px;"></div>
+            <label for="price">price</label><br>
+            <input type="text" id="price" th:field="*{price}">
+            <div style="clear: both; display: block; height: 10px;"></div>
+            <label for="category">Category</label><br>
+                <select id="category" th:field="*{category}">
+                    <option th:each="category : ${categories}" th:value="${category.categoryId}" th:text="${category.name}"></option>
+                </select>
+            <div style="clear: both; display: block; height: 10px;"></div>
+            <input type="submit" value="Update" class="btn btn-success">
+            
+        </form>
+        <a href="/games" class="btn btn-primary"> cancel</a>
+    </div>
+
+</body></html>
