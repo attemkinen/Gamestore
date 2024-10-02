@@ -1,6 +1,7 @@
 package fi.backend.Gamestore.domain;
 
 import jakarta.validation.constraints.NotEmpty;
+
 import jakarta.validation.constraints.Size;
 
 public class SignupForm {
