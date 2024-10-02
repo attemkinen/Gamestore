@@ -95,7 +95,7 @@ public class GamestoreApplication {
 			// creating new users
 			User user1 = new User ("admin", "$2a$10$3j9DzR9l8qDIeccPMJEHwu9Un1bIcnh6zQa0BwGBimxEfVIhYTlnK", "ADMIN");
 			User user2 = new User ("user", "$2a$10$nGe2DACbeS99PzZzjnWUy.hxj79JUlz98C3YvzdfvlO/eSGiSwJJC", "USER");
-			User user3 = new User("atte", "$2y$10$6.vHKxRtaA3FF8YVjOobI.6EMJZdJPLCUuGiwjR.x0q83xYY5FOwS", "ADMIN");
+			User user3 = new User("atte", "$2y$10$4dbRy6JeGpWGLBiuCLIDGejOb5KuTwyaP6SIvuUrfBplJzcYXRo5C", "ADMIN");
 			urepository.save(user1);
 			urepository.save(user2);
 			urepository.save(user3);
