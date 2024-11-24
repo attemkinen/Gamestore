@@ -96,9 +96,11 @@ public class GamestoreApplication {
 			User user1 = new User ("admin", "$2a$10$3j9DzR9l8qDIeccPMJEHwu9Un1bIcnh6zQa0BwGBimxEfVIhYTlnK", "ADMIN");
 			User user2 = new User ("user", "$2a$10$nGe2DACbeS99PzZzjnWUy.hxj79JUlz98C3YvzdfvlO/eSGiSwJJC", "USER");
 			User user3 = new User("atte", "$2y$10$4dbRy6JeGpWGLBiuCLIDGejOb5KuTwyaP6SIvuUrfBplJzcYXRo5C", "ADMIN");
+			User user4 = new User("testi", "$2y$10$lVZawVxzPSbEBtW6gQRWm.GEq9c/hqUBqjvDVJWsYtHHHHdoTe3Fi", "ADMIN");
 			urepository.save(user1);
 			urepository.save(user2);
 			urepository.save(user3);
+			urepository.save(user4);
 			
 			
 		};
