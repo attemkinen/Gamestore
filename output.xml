@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1.1 (Python 3.11.0 on win32)" generated="20241125 13:39:22.672" rpa="false" schemaversion="4">
+<suite id="s1" name="game CRUD tests" source="C:\Users\attem\eclipse-workspace\Gamestore\robot_tests\game_CRUD_tests.robot">
+<test id="s1-t1" name="Add New Game After Login" line="26">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${LOGIN_URL}</arg>
+<arg>Chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20241125 13:39:22.925" level="INFO">Opening browser 'Chrome' to base url 'http://localhost:8080/login'.</msg>
+<status status="PASS" starttime="20241125 13:39:22.909" endtime="20241125 13:39:25.115"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20241125 13:39:25.117" endtime="20241125 13:39:25.183"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>name=username</arg>
+<arg>${USERNAME}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20241125 13:39:25.195" level="INFO">Typing text 'testi' into text field 'name=username'.</msg>
+<status status="PASS" starttime="20241125 13:39:25.183" endtime="20241125 13:39:25.391"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>name=password</arg>
+<arg>${PASSWORD}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20241125 13:39:25.391" level="INFO">Typing text 'testi' into text field 'name=password'.</msg>
+<status status="PASS" starttime="20241125 13:39:25.391" endtime="20241125 13:39:25.555"/>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>xpath=//input[@type='submit']</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20241125 13:39:25.557" level="INFO">Clicking button 'xpath=//input[@type='submit']'.</msg>
+<status status="PASS" starttime="20241125 13:39:25.555" endtime="20241125 13:39:25.857"/>
+</kw>
+<kw name="Get Location" library="SeleniumLibrary">
+<var>${current_url}</var>
+<doc>Returns the current browser window URL.</doc>
+<msg timestamp="20241125 13:39:25.872" level="INFO">${current_url} = http://localhost:8080/games</msg>
+<status status="PASS" starttime="20241125 13:39:25.857" endtime="20241125 13:39:25.872"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${current_url}</arg>
+<arg>http://localhost:8080/games</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" starttime="20241125 13:39:25.873" endtime="20241125 13:39:25.873"/>
+</kw>
+<kw name="Click Link" library="SeleniumLibrary">
+<arg>xpath=//a[contains(@href, '/newgame')]</arg>
+<doc>Clicks a link identified by ``locator``.</doc>
+<msg timestamp="20241125 13:39:25.874" level="INFO">Clicking link 'xpath=//a[contains(@href, '/newgame')]'.</msg>
+<status status="PASS" starttime="20241125 13:39:25.874" endtime="20241125 13:39:26.073"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>xpath=//input[@name='name']</arg>
+<arg>${GAME_NAME}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20241125 13:39:26.075" level="INFO">Typing text 'Test Game' into text field 'xpath=//input[@name='name']'.</msg>
+<status status="PASS" starttime="20241125 13:39:26.074" endtime="20241125 13:39:26.242"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>xpath=//input[@name='console']</arg>
+<arg>${GAME_CONSOLE}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20241125 13:39:26.244" level="INFO">Typing text 'PlayStation' into text field 'xpath=//input[@name='console']'.</msg>
+<status status="PASS" starttime="20241125 13:39:26.243" endtime="20241125 13:39:26.381"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>xpath=//input[@name='description']</arg>
+<arg>${GAME_DESCRIPTION}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20241125 13:39:26.382" level="INFO">Typing text 'A test game description' into text field 'xpath=//input[@name='description']'.</msg>
+<status status="PASS" starttime="20241125 13:39:26.382" endtime="20241125 13:39:26.558"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>xpath=//input[@name='ageLimit']</arg>
+<arg>${GAME_AGE_LIMIT}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20241125 13:39:26.558" level="INFO">Typing text '12' into text field 'xpath=//input[@name='ageLimit']'.</msg>
+<status status="PASS" starttime="20241125 13:39:26.558" endtime="20241125 13:39:26.653"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>xpath=//input[@name='published']</arg>
+<arg>${GAME_PUBLISHED}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20241125 13:39:26.653" level="INFO">Typing text '2023' into text field 'xpath=//input[@name='published']'.</msg>
+<status status="PASS" starttime="20241125 13:39:26.653" endtime="20241125 13:39:26.748"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>xpath=//input[@name='price']</arg>
+<arg>${GAME_PRICE}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20241125 13:39:26.748" level="INFO">Typing text '49.99' into text field 'xpath=//input[@name='price']'.</msg>
+<status status="PASS" starttime="20241125 13:39:26.748" endtime="20241125 13:39:26.865"/>
+</kw>
+<kw name="Select From List By Label" library="SeleniumLibrary">
+<arg>id=category</arg>
+<arg>${CATEGORY_NAME}</arg>
+<doc>Selects options from selection list ``locator`` by ``labels``.</doc>
+<msg timestamp="20241125 13:39:26.865" level="INFO">Selecting options from selection list 'id=category' by label Fantasy.</msg>
+<status status="PASS" starttime="20241125 13:39:26.865" endtime="20241125 13:39:26.911"/>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>xpath=//input[@type='submit']</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20241125 13:39:26.912" level="INFO">Clicking button 'xpath=//input[@type='submit']'.</msg>
+<status status="PASS" starttime="20241125 13:39:26.911" endtime="20241125 13:39:27.013"/>
+</kw>
+<kw name="Wait Until Page Contains" library="SeleniumLibrary">
+<arg>${GAME_NAME}</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" starttime="20241125 13:39:27.014" endtime="20241125 13:39:27.060"/>
+</kw>
+<doc>Testaa uuden pelin lisääminen kirjautumisen jälkeen ja varmistaa, että peli ilmestyy pelilistalle.</doc>
+<status status="PASS" starttime="20241125 13:39:22.909" endtime="20241125 13:39:27.060"/>
+</test>
+<test id="s1-t2" name="Edit Game After Login" line="56">
+<kw name="Click Link" library="SeleniumLibrary">
+<arg>xpath=//a[contains(@href, '/edit/1')]</arg>
+<doc>Clicks a link identified by ``locator``.</doc>
+<msg timestamp="20241125 13:39:27.064" level="INFO">Clicking link 'xpath=//a[contains(@href, '/edit/1')]'.</msg>
+<status status="PASS" starttime="20241125 13:39:27.062" endtime="20241125 13:39:27.238"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>xpath=//input[@name='name']</arg>
+<arg>${GAME_NAME}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20241125 13:39:27.240" level="INFO">Typing text 'Test Game' into text field 'xpath=//input[@name='name']'.</msg>
+<status status="PASS" starttime="20241125 13:39:27.239" endtime="20241125 13:39:27.348"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>xpath=//input[@name='console']</arg>
+<arg>${GAME_CONSOLE}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20241125 13:39:27.348" level="INFO">Typing text 'PlayStation' into text field 'xpath=//input[@name='console']'.</msg>
+<status status="PASS" starttime="20241125 13:39:27.348" endtime="20241125 13:39:27.449"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>xpath=//input[@name='description']</arg>
+<arg>${GAME_DESCRIPTION}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20241125 13:39:27.449" level="INFO">Typing text 'A test game description' into text field 'xpath=//input[@name='description']'.</msg>
+<status status="PASS" starttime="20241125 13:39:27.449" endtime="20241125 13:39:27.579"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>xpath=//input[@name='ageLimit']</arg>
+<arg>${GAME_AGE_LIMIT}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20241125 13:39:27.580" level="INFO">Typing text '12' into text field 'xpath=//input[@name='ageLimit']'.</msg>
+<status status="PASS" starttime="20241125 13:39:27.579" endtime="20241125 13:39:27.652"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>xpath=//input[@name='published']</arg>
+<arg>${GAME_PUBLISHED}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20241125 13:39:27.653" level="INFO">Typing text '2023' into text field 'xpath=//input[@name='published']'.</msg>
+<status status="PASS" starttime="20241125 13:39:27.652" endtime="20241125 13:39:27.752"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>xpath=//input[@name='price']</arg>
+<arg>${GAME_PRICE}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20241125 13:39:27.752" level="INFO">Typing text '49.99' into text field 'xpath=//input[@name='price']'.</msg>
+<status status="PASS" starttime="20241125 13:39:27.752" endtime="20241125 13:39:27.857"/>
+</kw>
+<kw name="Select From List By Label" library="SeleniumLibrary">
+<arg>id=category</arg>
+<arg>${CATEGORY_NAME}</arg>
+<doc>Selects options from selection list ``locator`` by ``labels``.</doc>
+<msg timestamp="20241125 13:39:27.858" level="INFO">Selecting options from selection list 'id=category' by label Fantasy.</msg>
+<status status="PASS" starttime="20241125 13:39:27.858" endtime="20241125 13:39:27.890"/>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>xpath=//input[@type='submit']</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20241125 13:39:27.891" level="INFO">Clicking button 'xpath=//input[@type='submit']'.</msg>
+<status status="PASS" starttime="20241125 13:39:27.890" endtime="20241125 13:39:27.992"/>
+</kw>
+<kw name="Wait Until Page Contains" library="SeleniumLibrary">
+<arg>${GAME_NAME}</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" starttime="20241125 13:39:27.993" endtime="20241125 13:39:28.026"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20241125 13:39:28.026" endtime="20241125 13:39:30.278"/>
+</kw>
+<status status="PASS" starttime="20241125 13:39:27.062" endtime="20241125 13:39:30.278"/>
+</test>
+<status status="PASS" starttime="20241125 13:39:22.672" endtime="20241125 13:39:30.278"/>
+</suite>
+<statistics>
+<total>
+<stat pass="2" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="2" fail="0" skip="0" id="s1" name="game CRUD tests">game CRUD tests</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
