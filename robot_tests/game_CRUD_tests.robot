@@ -1,5 +1,7 @@
 *** Settings ***
 Library    SeleniumLibrary
+Library    RequestsLibrary
+Library    Collections
 
 *** Variables ***
 ${BASE_URL}           http://localhost:8080
@@ -17,7 +19,8 @@ ${EDIT_DESCRIPTION}   Edited game description
 ${EDIT_AGE_LIMIT}     14
 ${EDIT_PUBLISHED}     2025
 ${EDIT_PRICE}         39.99
-${CATEGORY_EDIT_NAME}      Fantasy    
+${CATEGORY_EDIT_NAME}      Fantasy
+${DELETE_GAME_ID}            26  # Pelin ID, jota haluat poistaa    
 ${USERNAME}           testi  
 ${PASSWORD}           testi  
 
@@ -67,4 +70,19 @@ Edit Game After Login
 
     Click Button    xpath=//input[@type='submit']
     Wait Until Page Contains    ${GAME_NAME}  # Varmistetaan, että peli ilmestyy pelilistalle
+    
+
+Delete Game
+
+    # Poista peli
+    Click Link    xpath=//a[contains(@href, '/deletegame/${DELETE_GAME_ID}')]
+
+    # Päivitä sivu varmistaaksesi, että peli on poistettu
+    SeleniumLibrary.Reload Page
+    Sleep    2s  # Lisää pieni viive, jos pelin poistaminen vie hetken
+    Wait Until Page Does Not Contain    ${DELETE_GAME_ID}  # Varmistetaan, että peli ei ole enää listassa
+    
+    # Varmista, että peli on poistettu
+    Wait Until Element Is Not Visible    xpath=//td[text()='${DELETE_GAME_ID}']  # Tarkistetaan, ettei pelin ID enää näy listassa
+    
     Close Browser
