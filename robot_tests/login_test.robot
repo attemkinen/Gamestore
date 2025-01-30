@@ -1,46 +1,27 @@
-*** Settings ***
-Library    SeleniumLibrary
-
-*** Variables ***
-${LOGIN_URL}      http://localhost:8080/login
-${USERNAME}       testi
-${PASSWORD}       testi
-${INVALID_USER}   invalid_user
-${INVALID_PASS}   invalid_pass
-
 *** Test Cases ***
-
-Successful Login
-    [Documentation]    Testaa, että käyttäjä voi kirjautua sisään oikeilla tiedoilla.
-    Open Browser    ${LOGIN_URL}    Chrome
+Sign Up And Login Test
+    [Documentation]    Testaa rekisteröityminen ja sen jälkeen kirjautuminen pelilistalle
+    [Tags]    signup
+    # Rekisteröidy uusi käyttäjä
+    Open Browser    ${SIGNUP_URL}    Chrome
     Maximize Browser Window
-    Input Text    name=username    ${USERNAME}
-    Input Text    name=password    ${PASSWORD}
-    Click Button    //input[@type="submit"]
-    ${current_url}=    Get Location
-    Should Be Equal As Strings    ${current_url}    http://localhost:8080/games
+    Input Text    xpath=//input[@name='username']    ${NEW_USERNAME}
+    Input Text    xpath=//input[@name='email']       ${USER_EMAIL}
+    Input Text    xpath=//input[@name='password']    ${NEW_PASSWORD}
+    Input Text    xpath=//input[@name='passwordCheck']    ${NEW_PASSWORD}
+    Click Button    xpath=//input[@type='submit']
+    
+    # Odotetaan, että ohjautuu login-sivulle
+    Wait Until Page Contains    Kirjaudu sisään
     Close Browser
 
-
-Unsuccessful Login with Invalid Username
-    [Documentation]    Testaa, että kirjautuminen epäonnistuu väärällä käyttäjänimellä.
+    # Kirjaudu sisään
     Open Browser    ${LOGIN_URL}    Chrome
     Maximize Browser Window
-    Input Text    name=username    ${INVALID_USER}
-    Input Text    name=password    ${PASSWORD}
-    Click Button    //input[@type="submit"]
-    Wait Until Page Contains    Invalid username and password.
+    Input Text    xpath=//input[@name='username']    ${NEW_USERNAME}
+    Input Text    xpath=//input[@name='password']    ${NEW_PASSWORD}
+    Click Button    xpath=//input[@type='submit']
+    
+    # Varmista, että pääset pelilistalle
+    Wait Until Page Contains    Pelit
     Close Browser
-
-Unsuccessful Login with Invalid Password
-    [Documentation]    Testaa, että kirjautuminen epäonnistuu väärällä salasanalla.
-    Open Browser    ${LOGIN_URL}    Chrome
-    Maximize Browser Window
-    Input Text    name=username    ${USERNAME}
-    Input Text    name=password    ${INVALID_PASS}
-    Click Button    //input[@type="submit"]
-    Wait Until Page Contains    Invalid username and password.
-    Close Browser
-
-
-

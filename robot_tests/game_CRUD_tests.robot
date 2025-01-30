@@ -1,7 +1,7 @@
 *** Settings ***
 Library    SeleniumLibrary
 Library    RequestsLibrary
-Library    Collections
+Library    Collections   
 
 *** Variables ***
 ${BASE_URL}           http://localhost:8080
@@ -20,9 +20,10 @@ ${EDIT_AGE_LIMIT}     14
 ${EDIT_PUBLISHED}     2025
 ${EDIT_PRICE}         39.99
 ${CATEGORY_EDIT_NAME}      Fantasy
-${DELETE_GAME_ID}            26  # Pelin ID, jota haluat poistaa    
+${DELETE_GAME_ID}            28  # Pelin ID, jota haluat poistaa    
 ${USERNAME}           testi  
-${PASSWORD}           testi  
+${PASSWORD}           testi
+                            
 
 *** Test Cases ***
 
@@ -56,31 +57,40 @@ Add New Game After Login
     
 
 
-Edit Game After Login
+Edit Newest Game After Login
+    [Documentation]    Etsii uusimman lisätyn pelin ja muokkaa sitä.
 
-    Click Link    xpath=//a[contains(@href, '/edit/1')]
+    # Oletetaan, että käyttäjä on jo kirjautunut sisään ja on pelilistalla
+    
+    # Etsi uusimman pelin edit-linkki ja paina sitä
+    ${last_game_edit_link}=    Get Element Attribute    xpath=(//a[contains(@href, '/edit')])[last()]    href
+    Go To    ${last_game_edit_link}
 
-    Input Text    xpath=//input[@name='name']    ${GAME_NAME}
-    Input Text    xpath=//input[@name='console']    ${GAME_CONSOLE}
-    Input Text    xpath=//input[@name='description']    ${GAME_DESCRIPTION}
-    Input Text    xpath=//input[@name='ageLimit']    ${GAME_AGE_LIMIT}
-    Input Text    xpath=//input[@name='published']    ${GAME_PUBLISHED}
-    Input Text    xpath=//input[@name='price']    ${GAME_PRICE}
-    Select From List By Label    id=category    ${CATEGORY_NAME}
+    # Päivitä pelin tiedot
+    Input Text    xpath=//input[@name='name']    ${EDIT_NAME}
+    Input Text    xpath=//input[@name='console']    ${EDIT_CONSOLE}
+    Input Text    xpath=//input[@name='description']    ${EDIT_DESCRIPTION}
+    Input Text    xpath=//input[@name='ageLimit']    ${EDIT_AGE_LIMIT}
+    Input Text    xpath=//input[@name='published']    ${EDIT_PUBLISHED}
+    Input Text    xpath=//input[@name='price']    ${EDIT_PRICE}
+    Select From List By Label    id=category    ${CATEGORY_EDIT_NAME}
 
+    # Lähetä muokattu lomake
     Click Button    xpath=//input[@type='submit']
-    Wait Until Page Contains    ${GAME_NAME}  # Varmistetaan, että peli ilmestyy pelilistalle
+
+    # Varmista, että muokatut tiedot näkyvät pelilistalla
+    Wait Until Page Contains    ${EDIT_NAME}
+
     
 
 Delete Game
 
     # Poista peli
-    Click Link    xpath=//a[contains(@href, '/deletegame/${DELETE_GAME_ID}')]
+    Click Link    xpath=(//a[contains(@href, '/deletegame')])[last()]
 
     # Päivitä sivu varmistaaksesi, että peli on poistettu
     SeleniumLibrary.Reload Page
-    Sleep    2s  # Lisää pieni viive, jos pelin poistaminen vie hetken
-    Wait Until Page Does Not Contain    ${DELETE_GAME_ID}  # Varmistetaan, että peli ei ole enää listassa
+   Wait Until Page Does Not Contain    ${EDIT_NAME}  # Varmistetaan, että peli ei ole enää listassa
     
     # Varmista, että peli on poistettu
     Wait Until Element Is Not Visible    xpath=//td[text()='${DELETE_GAME_ID}']  # Tarkistetaan, ettei pelin ID enää näy listassa
